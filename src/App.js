@@ -26,11 +26,16 @@ class App extends Component {
   }
 
   setAdditionalColor = (hexColor,index) => {
-    let lastState = this.state.additionalColors;
+    let lastState = [...this.state.additionalColors];
     lastState[index] = hexColor;
 
     this.setState({additionalColors:lastState});
   }
+
+  setOpacity = (e) => {
+    this.setState({opacity:e.target.value})
+  }
+
 
   render() {
     return (
@@ -71,7 +76,8 @@ class App extends Component {
           <p>
             Select your main color opacity.
           </p>
-          <input type="range" min="0" max="1" step=".01" style={{width:'100%'}}/>
+          { parseInt(this.state.opacity * 100) }%
+          <input type="range" min="0" max="1" step=".01" value={ this.state.opacity } onChange={ this.setOpacity } style={{width:'100%'}}/>
         </section>
         
         <section>
