@@ -13,17 +13,22 @@ section {
 	text-align:left;
 }
 
+.swatch-holder {
+	display:flex;
+	flex-flow: row nowrap;
+	width:100%;
+}
 .color-swatch {
-	height:4em;
-	width: 100%;
-	margin:1em 0;
+	height:7em;
 	text-align:center;
+	flex-basis:100%;
 }
 
 .color-swatch input {
-	margin-top:1.5em;
+	margin:4em 1em;
 	height:2em;
 	text-align:center;
+	width:80%;
 }
 
 .screen-reader-text {
