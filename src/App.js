@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import ColorSwatch from './components/ColorSwatch';
+import mixColors from './components/utilities';
 
 class App extends Component {
   constructor() {
@@ -8,8 +9,7 @@ class App extends Component {
     this.state = {
       primaryColor: '#F00000',
       grays: ['#dddddd','#666666'],
-      opacity: 0.6,
-      computedGrays: ['#F00000','#F00000'],
+      opacity: 0.1,
       additionalColors: ['#FFF000']
     };
   }
@@ -83,8 +83,8 @@ class App extends Component {
         <section>
           <h2>Step 4: Previews Your Harmonized Grays</h2>
            {
-            this.state.computedGrays.map((item,index) => (
-              <ColorSwatch label={`Computed Gray $(index)`} color={ item } key={ index } usePicker={ false } />
+            this.state.grays.map((item,index) => (
+              <ColorSwatch label={`Computed Gray $(index)`} color={  '#'+mixColors( this.state.primaryColor, item, this.state.opacity ) } key={ index } usePicker={ false } />
             ))
           }
         </section>
@@ -109,8 +109,8 @@ class App extends Component {
             <ColorSwatch label="Primary Color" color={ this.state.primaryColor } usePicker={ false } />
           
           {
-            this.state.computedGrays.map( ( item, index ) => (
-              <ColorSwatch label={`Computed Gray $(index)`} color={ item } key={ index } usePicker={ false } />
+            this.state.grays.map( ( item, index ) => (
+              <ColorSwatch label={`Computed Gray $(index)`} color={ '#'+mixColors( this.state.primaryColor, item, this.state.opacity ) } key={ index } usePicker={ false } />
             ))
           }
           {  
