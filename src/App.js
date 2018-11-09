@@ -120,6 +120,24 @@ class App extends Component {
         
         <section>
           <h2>Your Color Pallet</h2>
+          <h3>Original Pallet</h3>
+           <div className="swatch-holder">
+            
+            <ColorSwatch label="Primary Color" color={ this.state.primaryColor } usePicker={ false } />
+            {  
+              this.state.additionalColors.map( (item,index) => (
+                <ColorSwatch label={`Additional Color $(index)`} color={ item } key={ index } usePicker={ false }/>
+              ))
+            }
+          
+            {
+              this.state.grays.map( ( item, index ) => (
+                <ColorSwatch label={`Computed Gray $(index)`} color={ item } key={ index } usePicker={ false } />
+              ))
+            }
+            
+          </div>
+          <h3>Harmonized Pallet</h3>
           <div className="swatch-holder">
             <ColorSwatch label="Primary Color" color={ this.state.primaryColor } usePicker={ false } />
             {  
