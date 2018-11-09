@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import ColorSwatch from './components/ColorSwatch';
-import mixColors from './components/utilities';
+import { RGBToHex, mixColors } from './components/utilities';
 
 class App extends Component {
   constructor() {
@@ -10,7 +10,7 @@ class App extends Component {
       primaryColor: '#F00000',
       grays: ['#dddddd','#666666'],
       opacity: 0.1,
-      additionalColors: ['#FFF000']
+      additionalColors: []
     };
   }
 
@@ -37,11 +37,11 @@ class App extends Component {
   }
 
   addGray = () => {
-    this.setState({grays:[...this.state.grays,'#000000']});
+    this.setState({grays:[...this.state.grays, `#${mixColors('#000000', this.state.grays[ this.state.grays.length-1 ], .3 )}` ] } );
   }
 
   addAdditional = () => {
-    this.setState({additionalColors:[...this.state.additionalColors,'#001122']});
+    this.setState({additionalColors:[...this.state.additionalColors,`#${RGBToHex([Math.floor(Math.random() * Math.floor(255)),Math.floor(Math.random() * Math.floor(255)),Math.floor(Math.random() * Math.floor(255))])}`]});
   }
 
 

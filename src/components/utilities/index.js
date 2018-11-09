@@ -46,6 +46,3 @@ export function mixColors( color1, color2, weight ) {
 	) );
 	return RGBToHex(rgbCombined);
 }
-
-
-export default mixColors;
