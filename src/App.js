@@ -36,6 +36,14 @@ class App extends Component {
     this.setState({opacity:e.target.value})
   }
 
+  addGray = () => {
+    this.setState({grays:[...this.state.grays,'#000000']});
+  }
+
+  addAdditional = () => {
+    this.setState({additionalColors:[...this.state.additionalColors,'#001122']});
+  }
+
 
   render() {
     return (
@@ -66,7 +74,7 @@ class App extends Component {
             ))
 
           }
-          <button>
+          <button onClick={ this.addGray }>
             Add another gray
           </button>
         </section>
@@ -94,12 +102,12 @@ class App extends Component {
           <p>
             If you would like to add additional colors to create a full pallet, select them here.
           </p>
-           {
+          {
             this.state.additionalColors.map((item,index) => (
               <ColorSwatch label={`Additional Color $(index)`} color={ item } key={ index } updateColor= { ( color ) => this.setAdditionalColor( color, index ) }/>
             ))
           }
-           <button>
+           <button onClick={ this.addAdditional }>
             Add another color
           </button>
         </section>
