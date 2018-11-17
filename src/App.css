@@ -1,3 +1,10 @@
+body {
+	background: rgb(238,238,238); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+}
 .app {
   width:80%;
   margin-left:auto;
@@ -6,11 +13,19 @@
 }
 
 section {
-	border:1px solid lightgray;
-	border-radius: 5px;
-	margin:3em;
-	padding:0 2em;
+	margin:2em 0;
+	padding:1em 2em;
 	text-align:left;
+}
+
+.grays .color-swatch {
+	border:1px solid black;
+}
+
+.pallet {
+	border:none;
+	padding:0;
+	
 }
 
 .swatch-holder {
@@ -42,4 +57,29 @@ section {
 	position: absolute !important;
 	width: 1px;
 	word-wrap: normal !important;
+}
+
+.button {
+	background-color: #11ac5e;
+    border: none;
+    color: #FFFFFF;
+    padding: 15px 32px;
+    text-align: center;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    margin: 16px 0 !important;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.pallet-title {
+	margin:0;
+	padding:1em;
+}
+
+hr {
+	margin:0;
+	padding:0;
+	color:#FFF;
 }

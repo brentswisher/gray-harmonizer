@@ -7,9 +7,9 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      primaryColor: '#F00000',
-      grays: ['#DDDDDD','#666666'],
-      opacity: 0.1,
+      primaryColor: '#11AC5E',
+      grays: ['#FEFEFE','#666666','#232323'],
+      opacity: 0.05,
       additionalColors: []
     };
   }
@@ -46,15 +46,16 @@ class App extends Component {
 
 
   render() {
+    const computedGrays = this.state.grays.map((item,index) => (
+      '#'+mixColors( this.state.primaryColor, item, this.state.opacity )
+    ));
     return (
       <div className="app">
-        <h1>Simple Color Harmonizer</h1>
-        <p>
-          One simple way to make your a design flow together better is to harmonize the grays in your color pallet.
-          Instead of straight gray values, this created grays tinted with the colors of your design. It's a subtle difference,
-          but it adds a nice flow to a design.
-        </p>
-        <section>
+        <h1>Easy Gray Harmonizer</h1>
+        <a href="https://github.com/brentswisher/gray-harmonizer" className="button" style={{backgroundColor:this.state.primaryColor} } > Contact </a>
+        &nbsp;
+        <a href="https://github.com/brentswisher/gray-harmonizer" className="button" style={{backgroundColor:this.state.primaryColor} } > View on Github </a>
+        <section style={ {backgroundColor:computedGrays[0]}}>
           <h2>Step 1: Pick a Color</h2>
           <p>
             Select the color you would like to harmonize your grays with.
@@ -63,7 +64,7 @@ class App extends Component {
           <ColorSwatch label="Primary Color" color={ this.state.primaryColor } updateColor={ this.setPrimaryColor }/>
         </section>
         
-        <section>
+       <section className="grays" style={{backgroundColor:computedGrays[0]}}>
           <h2>Step 2: Pick Your Gray(s)</h2>
           <p>
             Add the shades of gray you want to use.
@@ -76,12 +77,12 @@ class App extends Component {
 
             }
           </div>
-          <button onClick={ this.addGray }>
+          <button className="button" style={{backgroundColor:this.state.primaryColor} } onClick={ this.addGray }>
             Add another gray
           </button>
         </section>
         
-        <section>
+        <section style={{backgroundColor:computedGrays[0]}}>
           <h2>Step 3: Select Opacity</h2>
           <p>
             Select your main color opacity.
@@ -90,39 +91,12 @@ class App extends Component {
           <input type="range" min="0" max="1" step=".01" value={ this.state.opacity } onChange={ this.setOpacity } style={{width:'100%'}}/>
         </section>
         
-        <section>
-          <h2>Step 4: Previews Your Harmonized Grays</h2>
+        <section class="pallet">
+          <h2 className="pallet-title" style={{textAlign:'center',color:this.state.grays[0],backgroundColor:this.state.grays[computedGrays.length-1]}}>
+            Original Pallet
+          </h2>
+          <hr />
            <div className="swatch-holder">
-             {
-              this.state.grays.map((item,index) => (
-                <ColorSwatch label={`Computed Gray $(index)`} color={  '#'+mixColors( this.state.primaryColor, item, this.state.opacity ) } key={ index } usePicker={ false } />
-              ))
-            }
-          </div>
-        </section>
-        
-        <section>
-          <h2>(Optional) Add Ather Colors</h2>
-          <p>
-            If you would like to add additional colors to create a full pallet, select them here.
-          </p>
-          <div className="swatch-holder">
-            {
-              this.state.additionalColors.map((item,index) => (
-                <ColorSwatch label={`Additional Color $(index)`} color={ item } key={ index } updateColor= { ( color ) => this.setAdditionalColor( color, index ) }/>
-              ))
-            }
-          </div>
-           <button onClick={ this.addAdditional }>
-            Add another color
-          </button>
-        </section>
-        
-        <section>
-          <h2>Your Color Pallet</h2>
-          <h3>Original Pallet</h3>
-           <div className="swatch-holder">
-            
             <ColorSwatch label="Primary Color" color={ this.state.primaryColor } usePicker={ false } />
             {  
               this.state.additionalColors.map( (item,index) => (
@@ -137,7 +111,7 @@ class App extends Component {
             }
             
           </div>
-          <h3>Harmonized Pallet</h3>
+          <hr />
           <div className="swatch-holder">
             <ColorSwatch label="Primary Color" color={ this.state.primaryColor } usePicker={ false } />
             {  
@@ -147,13 +121,37 @@ class App extends Component {
             }
           
             {
-              this.state.grays.map( ( item, index ) => (
-                <ColorSwatch label={`Computed Gray $(index)`} color={ '#'+mixColors( this.state.primaryColor, item, this.state.opacity ) } key={ index } usePicker={ false } />
+              computedGrays.map( ( item, index ) => (
+                <ColorSwatch label={`Computed Gray $(index)`} color={ item } key={ index } usePicker={ false } />
               ))
             }
             
           </div>
+          <hr />
+          <h2 className="pallet-title" style={{textAlign:'center',color:computedGrays[0],backgroundColor:computedGrays[computedGrays.length-1]}}>
+            Harmonized Pallet
+          </h2>
         </section>
+          
+        
+        <section style={{backgroundColor:computedGrays[0]}}>
+          <h2>(Optional) Add Other Colors</h2>
+          <p>
+            If you would like to add additional colors to create a full pallet, select them here.
+          </p>
+          <div className="swatch-holder">
+            {
+              this.state.additionalColors.map((item,index) => (
+                <ColorSwatch label={`Additional Color $(index)`} color={ item } key={ index } updateColor= { ( color ) => this.setAdditionalColor( color, index ) }/>
+              ))
+            }
+          </div>
+           <button className="button" style={{backgroundColor:this.state.primaryColor} } onClick={ this.addAdditional }>
+            Add another color
+          </button>
+        </section>
+        
+        
       </div>
     );
   }
