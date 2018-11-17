@@ -2,6 +2,7 @@
   "name": "gray-harmonizer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://brentswisher.github.io/gray-harmonizer"
   "dependencies": {
     "react": "^16.6.0",
     "react-color": "^2.14.1",
