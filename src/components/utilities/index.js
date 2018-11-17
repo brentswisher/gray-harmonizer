@@ -20,13 +20,11 @@ export function hexToRGB(hexColor){
 
 // Take in a rgb array and convert it to a hex string
 export function RGBToHex( rgbColor ){
-	const hexValues = rgbColor.map( ( colorPart ) => (
-		colorPart.toString(16).toUpperCase()
-	));
-
-	return hexValues.reduce((acc, val) => (
-		acc + (val.length === 1 ? 0+val : val)
-	));
+	const hexArray = rgbColor.map( ( colorPart ) => {
+		const hexValue = colorPart.toString(16);
+		return (hexValue.length === 1 ? '0' + hexValue : hexValue);
+	});
+	return hexArray.join('').toUpperCase();
 }
 
 // Combine two arrays so you end up with a single array of arrays

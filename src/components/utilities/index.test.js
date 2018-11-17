@@ -13,6 +13,7 @@ colors.map( (item) => {
 	});
 })
 
+//Test 3 to 6 code hex conversion
 test('Correctly returns the 6 digit hex for a 3 digit shortcode with hex prefix', () => {
 	expect(expandHexCode('#F00')).toEqual('FF0000');
 });
