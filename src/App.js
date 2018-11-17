@@ -7,7 +7,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      primaryColor: '#11AC5E',
+      primaryColor: '#0a8441',
       grays: ['#FEFEFE','#666666','#232323'],
       opacity: 0.05,
       additionalColors: []
@@ -50,13 +50,13 @@ class App extends Component {
       '#'+mixColors( this.state.primaryColor, item, this.state.opacity )
     ));
     return (
-      <div className="app">
-        <h1>Easy Gray Harmonizer</h1>
-        <a href="https://github.com/brentswisher/gray-harmonizer" className="button" style={{backgroundColor:this.state.primaryColor} } > Contact </a>
-        &nbsp;
-        <a href="https://github.com/brentswisher/gray-harmonizer" className="button" style={{backgroundColor:this.state.primaryColor} } > View on Github </a>
-        <section style={ {backgroundColor:computedGrays[0]}}>
-          <h2>Step 1: Pick a Color</h2>
+      <div className="app" role="main" aria-labelledby="mainlbl">
+        <a href="https://github.com/brentswisher/gray-harmonizer" className="button button-github" style={{float:'right',backgroundColor:this.state.primaryColor} } >View on Github</a>
+        <h1 id="mainlbl">
+          Easy Gray Harmonizer
+        </h1>
+        <section style={ {backgroundColor:computedGrays[0]}} aria-labelledby="section1lbl">
+          <h2 id="section1lbl">Step 1: Pick a Color</h2>
           <p>
             Select the color you would like to harmonize your grays with.
           </p>
@@ -64,15 +64,15 @@ class App extends Component {
           <ColorSwatch label="Primary Color" color={ this.state.primaryColor } updateColor={ this.setPrimaryColor }/>
         </section>
         
-       <section className="grays" style={{backgroundColor:computedGrays[0]}}>
-          <h2>Step 2: Pick Your Gray(s)</h2>
+       <section className="grays" style={{backgroundColor:computedGrays[0]}} aria-labelledby="section2lbl">
+          <h2 id="section2lbl">Step 2: Pick Your Gray(s)</h2>
           <p>
             Add the shades of gray you want to use.
           </p>
           <div className="swatch-holder">
             {
               this.state.grays.map((item,index) => (
-                <ColorSwatch label={`Gray $(index)`} color={ item } key={ index } updateColor= { ( color ) => this.setGrayColor( color, index ) } />
+                <ColorSwatch label={`Gray ${index+1}`} color={ item } key={ index } updateColor= { ( color ) => this.setGrayColor( color, index ) } />
               ))
 
             }
@@ -82,17 +82,19 @@ class App extends Component {
           </button>
         </section>
         
-        <section style={{backgroundColor:computedGrays[0]}}>
-          <h2>Step 3: Select Opacity</h2>
+        <section style={{backgroundColor:computedGrays[0]}} aria-labelledby="section3lbl">
+          <h2 id="section3lbl">Step 3: Select Opacity</h2>
           <p>
-            Select your main color opacity.
+            <label for="opacity">
+              Select your main color opacity.
+            </label>
           </p>
           { parseInt(this.state.opacity * 100) }%
-          <input type="range" min="0" max="1" step=".01" value={ this.state.opacity } onChange={ this.setOpacity } style={{width:'100%'}}/>
+          <input type="range" name="opacity" id="opacity" min="0" max="1" step=".01" value={ this.state.opacity } onChange={ this.setOpacity } style={{width:'100%'}}/>
         </section>
         
-        <section class="pallet">
-          <h2 className="pallet-title" style={{textAlign:'center',color:this.state.grays[0],backgroundColor:this.state.grays[computedGrays.length-1]}}>
+        <section class="pallet" aria-labelledby="section4lbl">
+          <h2 id="section4lbl" className="pallet-title" style={{textAlign:'center',color:this.state.grays[0],backgroundColor:this.state.grays[computedGrays.length-1]}}>
             Original Pallet
           </h2>
           <hr />
@@ -100,13 +102,13 @@ class App extends Component {
             <ColorSwatch label="Primary Color" color={ this.state.primaryColor } usePicker={ false } />
             {  
               this.state.additionalColors.map( (item,index) => (
-                <ColorSwatch label={`Additional Color $(index)`} color={ item } key={ index } usePicker={ false }/>
+                <ColorSwatch label={`Additional Color ${index+1}`} color={ item } key={ index } usePicker={ false }/>
               ))
             }
           
             {
               this.state.grays.map( ( item, index ) => (
-                <ColorSwatch label={`Computed Gray $(index)`} color={ item } key={ index } usePicker={ false } />
+                <ColorSwatch label={`Original Gray ${index+1}`} color={ item } key={ index } usePicker={ false } />
               ))
             }
             
@@ -116,13 +118,13 @@ class App extends Component {
             <ColorSwatch label="Primary Color" color={ this.state.primaryColor } usePicker={ false } />
             {  
               this.state.additionalColors.map( (item,index) => (
-                <ColorSwatch label={`Additional Color $(index)`} color={ item } key={ index } usePicker={ false }/>
+                <ColorSwatch label={`Additional Color ${index+1}`} color={ item } key={ index } usePicker={ false }/>
               ))
             }
           
             {
               computedGrays.map( ( item, index ) => (
-                <ColorSwatch label={`Computed Gray $(index)`} color={ item } key={ index } usePicker={ false } />
+                <ColorSwatch label={`Computed Gray ${index+1}`} color={ item } key={ index } usePicker={ false } />
               ))
             }
             
@@ -134,15 +136,15 @@ class App extends Component {
         </section>
           
         
-        <section style={{backgroundColor:computedGrays[0]}}>
-          <h2>(Optional) Add Other Colors</h2>
+        <section style={{backgroundColor:computedGrays[0]}} aria-labelledby="section5lbl">
+          <h2 id="section5lbl">(Optional) Add Other Colors</h2>
           <p>
             If you would like to add additional colors to create a full pallet, select them here.
           </p>
           <div className="swatch-holder">
             {
               this.state.additionalColors.map((item,index) => (
-                <ColorSwatch label={`Additional Color $(index)`} color={ item } key={ index } updateColor= { ( color ) => this.setAdditionalColor( color, index ) }/>
+                <ColorSwatch label={`Additional Color ${index+1}`} color={ item } key={ index } updateColor= { ( color ) => this.setAdditionalColor( color, index ) }/>
               ))
             }
           </div>
@@ -150,8 +152,6 @@ class App extends Component {
             Add another color
           </button>
         </section>
-        
-        
       </div>
     );
   }

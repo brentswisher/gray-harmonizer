@@ -33,9 +33,11 @@ class ColorSwatch extends React.Component {
 			bottom: '0px',
 			left: '0px',
 		}
+		const colorLabel = `color${parseInt(Math.random()*10000)}`;
+
 	  return (
-		  <div className="color-swatch" style={ { backgroundColor : this.props.color } } onClick={ this.setEditable }>
-	        <label htmlFor="primaryColor" className="screen-reader-text">
+		  <div className="color-swatch" style={ { backgroundColor : this.props.color } } onClick={ this.setEditable } tabIndex="0">
+	        <label htmlFor={colorLabel} className="screen-reader-text">
 	          { this.props.label }
 	        </label>
 	        {
@@ -48,7 +50,7 @@ class ColorSwatch extends React.Component {
           			}
           		</div>
 	        }
-	        <input name="primaryColor" id="primaryColor" disabled readOnly value={ this.props.color } className="color-swatch-input" />
+	        <input name={colorLabel} id={colorLabel} disabled readOnly value={ this.props.color } className="color-swatch-input" />
 	      </div>
 	  )
 	}
