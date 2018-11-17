@@ -9,8 +9,7 @@ class App extends Component {
     this.state = {
       primaryColor: '#0a8441',
       grays: ['#FEFEFE','#666666','#232323'],
-      opacity: 0.05,
-      additionalColors: []
+      opacity: 0.05
     };
   }
 
@@ -25,13 +24,6 @@ class App extends Component {
     this.setState({grays:lastState});
   }
 
-  setAdditionalColor = (hexColor,index) => {
-    let lastState = [...this.state.additionalColors];
-    lastState[index] = hexColor;
-
-    this.setState({additionalColors:lastState});
-  }
-
   setOpacity = (e) => {
     this.setState({opacity:e.target.value})
   }
@@ -39,11 +31,6 @@ class App extends Component {
   addGray = () => {
     this.setState({grays:[...this.state.grays, `#${mixColors('#000000', this.state.grays[ this.state.grays.length-1 ], .3 )}` ] } );
   }
-
-  addAdditional = () => {
-    this.setState({additionalColors:[...this.state.additionalColors,`#${RGBToHex([Math.floor(Math.random() * Math.floor(255)),Math.floor(Math.random() * Math.floor(255)),Math.floor(Math.random() * Math.floor(255))])}`]});
-  }
-
 
   render() {
     const computedGrays = this.state.grays.map((item,index) => (
@@ -100,12 +87,6 @@ class App extends Component {
           <hr />
            <div className="swatch-holder">
             <ColorSwatch label="Primary Color" color={ this.state.primaryColor } usePicker={ false } />
-            {  
-              this.state.additionalColors.map( (item,index) => (
-                <ColorSwatch label={`Additional Color ${index+1}`} color={ item } key={ index } usePicker={ false }/>
-              ))
-            }
-          
             {
               this.state.grays.map( ( item, index ) => (
                 <ColorSwatch label={`Original Gray ${index+1}`} color={ item } key={ index } usePicker={ false } />
@@ -116,12 +97,6 @@ class App extends Component {
           <hr />
           <div className="swatch-holder">
             <ColorSwatch label="Primary Color" color={ this.state.primaryColor } usePicker={ false } />
-            {  
-              this.state.additionalColors.map( (item,index) => (
-                <ColorSwatch label={`Additional Color ${index+1}`} color={ item } key={ index } usePicker={ false }/>
-              ))
-            }
-          
             {
               computedGrays.map( ( item, index ) => (
                 <ColorSwatch label={`Computed Gray ${index+1}`} color={ item } key={ index } usePicker={ false } />
@@ -133,24 +108,6 @@ class App extends Component {
           <h2 className="pallet-title" style={{textAlign:'center',color:computedGrays[0],backgroundColor:computedGrays[computedGrays.length-1]}}>
             Harmonized Pallet
           </h2>
-        </section>
-          
-        
-        <section style={{backgroundColor:computedGrays[0]}} aria-labelledby="section5lbl">
-          <h2 id="section5lbl">(Optional) Add Other Colors</h2>
-          <p>
-            If you would like to add additional colors to create a full pallet, select them here.
-          </p>
-          <div className="swatch-holder">
-            {
-              this.state.additionalColors.map((item,index) => (
-                <ColorSwatch label={`Additional Color ${index+1}`} color={ item } key={ index } updateColor= { ( color ) => this.setAdditionalColor( color, index ) }/>
-              ))
-            }
-          </div>
-           <button className="button" style={{backgroundColor:this.state.primaryColor} } onClick={ this.addAdditional }>
-            Add another color
-          </button>
         </section>
       </div>
     );
