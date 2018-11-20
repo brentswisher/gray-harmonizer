@@ -1,31 +1,41 @@
 body {
-	background: rgb(238,238,238); /* Old browsers */
-	background: -moz-linear-gradient(top, rgba(238,238,238,1) 0%, rgba(204,204,204,1) 100%); /* FF3.6-15 */
-	background: -webkit-linear-gradient(top, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(204,204,204,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+	font-family: 'Open Sans', sans-serif;
 }
 .app {
-  width:80%;
-  margin-left:auto;
-  margin-right:auto;
-  text-align: center;
+	padding:0 2em;
 }
 
 section {
-	margin:2em 0;
+	width:80%;
+	margin:auto;
 	padding:1em 2em;
 	text-align:left;
+	border-bottom: 1px solid darkgray;
 }
 
+h1,h2,h3,h4 {
+	font-family: 'Oswald', sans-serif;
+}
+
+h1 {
+	font-size:3em;
+	margin:0.5em 0;
+}
+h2 {
+	font-size: 1.75em;
+	margin:0.5em 0 0 0;
+}
+
+p {
+	line-height:1.5em;
+	margin-bottom: 1em;
+}
 .grays .color-swatch {
 	border:1px solid black;
 }
 
 .pallet {
 	border:none;
-	padding:0;
-	
 }
 
 .swatch-holder {
@@ -36,15 +46,22 @@ section {
 .color-swatch {
 	height:7em;
 	text-align:center;
-	flex-basis:100%;
+	flex:1;
 	cursor: pointer;
 }
 
+
+@media (max-width: 800px) {
+  .swatch-holder {
+    display: block;
+  }
+}
 .color-swatch input {
 	margin:4em 1em;
 	height:2em;
 	text-align:center;
 	width:80%;
+	text-transform: uppercase;
 }
 
 .screen-reader-text {
@@ -61,23 +78,23 @@ section {
 }
 
 .button {
-    border: none;
-    color: #FFFFFF;
-    padding: 1em 2em;
-    text-align: center;
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-    margin: 1em 0;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.button-github {
-	position:absolute;
-	right: 10%;
-    top: 0.5em;
-    padding:0.5em;
+	font-family: 'Oswald', sans-serif;
+	font-size:1em;
+	display: inline-block;
+	vertical-align: middle;
+	margin: 0 0 1em 0;
+	padding: 0.85em 1em;
+	border: 1px solid transparent;
+	border-radius: 0;
+	-webkit-transition: background-color 0.25s ease-out, color 0.25s ease-out;
+	transition: background-color 0.25s ease-out, color 0.25s ease-out;
+	font-family: inherit;
+	-webkit-appearance: none;
+	line-height: 1;
+	text-align: center;
+	cursor: pointer;
+	color: #fefefe;
+	text-decoration:none;
 }
 
 .pallet-title {

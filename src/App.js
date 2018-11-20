@@ -37,11 +37,20 @@ class App extends Component {
       '#'+mixColors( this.state.primaryColor, item, this.state.opacity )
     ));
     return (
-      <div className="app" role="main" aria-labelledby="mainlbl">
-        <a href="https://github.com/brentswisher/gray-harmonizer" className="button button-github" style={{float:'right',backgroundColor:this.state.primaryColor} } >View on Github</a>
-        <h1 id="mainlbl">
-          Easy Gray Harmonizer
-        </h1>
+      <div className="app" role="main" aria-labelledby="mainlbl" style={ {backgroundColor:computedGrays[0]}}>
+        <section className="first-section" style={ {backgroundColor:computedGrays[0]}} aria-labelledby="mainlbl">
+          <h1 id="mainlbl">
+            Simple Gray Harmonizer
+          </h1>
+          <p>
+            Use this tool to take the gray values for you design and harmonize them with your primary or secondary color. It's a little trick that gives designs a really nice unity.
+          </p>
+          <p>
+            <a href="https://github.com/brentswisher/gray-harmonizer" className="button" style={{backgroundColor:this.state.primaryColor} } >Contact</a>
+            &nbsp;
+            <a href="https://github.com/brentswisher/gray-harmonizer" className="button" style={{backgroundColor:this.state.primaryColor} } >View on Github</a>
+          </p>
+        </section>
         <section style={ {backgroundColor:computedGrays[0]}} aria-labelledby="section1lbl">
           <h2 id="section1lbl">Step 1: Pick a Color</h2>
           <p>
@@ -64,9 +73,11 @@ class App extends Component {
 
             }
           </div>
-          <button className="button" style={{backgroundColor:this.state.primaryColor} } onClick={ this.addGray }>
-            Add another gray
-          </button>
+          <p>
+            <button className="button" style={{backgroundColor:this.state.primaryColor} } onClick={ this.addGray }>
+              Add Another Gray
+            </button>
+          </p>
         </section>
         
         <section style={{backgroundColor:computedGrays[0]}} aria-labelledby="section3lbl">
