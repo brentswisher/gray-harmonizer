@@ -2,7 +2,7 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 .app {
-	padding:0 2em;
+	padding:0 2em 4em;
 }
 
 section {
@@ -50,6 +50,10 @@ p {
 @media (max-width: 800px) {
   .swatch-holder {
     display: block;
+  }
+
+  .color-swatch {
+  	border:1px solid black;
   }
 }
 .color-swatch-input {
@@ -107,9 +111,12 @@ p {
 	min-width:125px;
 }
 
-.pallet-harmonized {
-	clear:left;
+@media screen and (max-width:800px){
+	.pallet-harmonized {
+		margin-top:2em;
+	}	
 }
+
 
 hr {
 	margin:0;
