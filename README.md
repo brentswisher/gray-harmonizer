@@ -14,4 +14,4 @@ I first discovered it from [Erica Schoonmaker](http://designbyeri.ca/about/) in 
 ## Thanks To
 * [Erica Schoonmaker](http://designbyeri.ca/about/) for the original technique
 * [react-color](https://casesandberg.github.io/react-color/) for the color pickers
-* [Create React App](https://github.com/facebook/create-react-app) for simplifying starting the projec
+* [Create React App](https://facebook.github.io/create-react-app/) for simplifying starting the project
