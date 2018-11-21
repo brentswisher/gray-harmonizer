@@ -9,17 +9,19 @@ class ColorSwatch extends React.Component {
 			editing: false
 		};
 	}
+	
 	setEditable = () => {
-		this.setState({"editing":!this.state.editing});
+		this.setState( { editing: true } );
 	}
 
-	updateColor = (color) => {
-		this.props.updateColor(color.hex);
+	updateColor = ( color ) => {
+		this.props.updateColor( color.hex );
 	}
 
-	handleClose = () => {
-    	this.setState({ displayColorPicker: false })
-  	}
+	handleClose = ( e ) => {
+		this.setState( { editing: false } );
+		e.stopPropagation(); //Prevent the setEditable from firing as it is the parent' onCLick
+	}
 
 	render() {
 		const popover = {
@@ -33,32 +35,32 @@ class ColorSwatch extends React.Component {
 			bottom: '0px',
 			left: '0px',
 		}
-		const colorLabel = `color${parseInt(Math.random()*10000)}`;
+		const colorLabel = `color${ parseInt( Math.random() * 10000 ) }`;
 
-	  return (
-		  <div className="color-swatch" style={ { backgroundColor : this.props.color } } onClick={ this.setEditable } tabIndex="0">
-	        <label htmlFor={colorLabel} className="screen-reader-text">
-	          { this.props.label }
-	        </label>
-	        {
-	        	this.state.editing &&
-	        	<div style={ popover }>
-          			<div style={ cover } onClick={ this.handleClose }/>
-          			{ 
-          				this.props.usePicker &&
-          				<ChromePicker color={ this.props.color } onChange={ this.updateColor } />
-          			}
-          		</div>
-	        }
-	        <input name={colorLabel} id={colorLabel} disabled readOnly value={ this.props.color } className="color-swatch-input" />
-	      </div>
-	  )
+		return (
+			<div className="color-swatch" style={ { backgroundColor : this.props.color } } onClick={ this.setEditable } tabIndex="0">
+				<label htmlFor={ colorLabel } className="screen-reader-text">
+					{ this.props.label }
+				</label>
+				{
+					this.state.editing &&
+					<div style={ popover }>
+						<div style={ cover } onClick={ this.handleClose } />
+						{ 
+							this.props.usePicker &&
+							<ChromePicker disableAlpha={ true } color={ this.props.color } onChange={ this.updateColor } />
+						}
+					</div>
+				}
+				<input name={ colorLabel } id={ colorLabel } disabled readOnly value={ this.props.color } className="color-swatch-input" />
+			</div>
+		)
 	}
 }
 
 
 ColorSwatch.defaultProps = {
-  usePicker: true
+	usePicker: true
 };
 
 export default ColorSwatch;
