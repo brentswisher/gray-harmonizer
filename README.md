@@ -1,7 +1,8 @@
 # Simple Gray Harmonizer
 
+## [View Project](https://brentswisher.github.io/gray-harmonizer/)
+
 ## Project Description
-[View Project](https://brentswisher.github.io/gray-harmonizer/)
 
 A little web app to simplify the process of harmonizing the grays of a color pallet. 
 
