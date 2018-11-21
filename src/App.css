@@ -34,10 +34,6 @@ p {
 	border:1px solid black;
 }
 
-.pallet {
-	border:none;
-}
-
 .swatch-holder {
 	display:flex;
 	flex-flow: row nowrap;
@@ -56,7 +52,7 @@ p {
     display: block;
   }
 }
-.color-swatch input {
+.color-swatch-input {
 	margin:4em 1em;
 	height:2em;
 	text-align:center;
@@ -97,9 +93,22 @@ p {
 	text-decoration:none;
 }
 
+.pallet {
+	border:none;
+	display:block;
+}
+
 .pallet-title {
+	font-size: 1.75em;
+	margin:0.5em 0 0 0;
 	margin:0;
 	padding:1em;
+	flex:1;
+	min-width:125px;
+}
+
+.pallet-harmonized {
+	clear:left;
 }
 
 hr {

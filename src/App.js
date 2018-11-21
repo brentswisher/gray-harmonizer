@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       primaryColor: '#0a8441',
       grays: ['#FEFEFE','#666666','#232323'],
-      opacity: 0.05
+      opacity: 0.1
     };
   }
 
@@ -92,11 +92,12 @@ class App extends Component {
         </section>
         
         <section class="pallet" aria-labelledby="section4lbl">
-          <h2 id="section4lbl" className="pallet-title" style={{textAlign:'center',color:this.state.grays[0],backgroundColor:this.state.grays[computedGrays.length-1]}}>
-            Original Pallet
-          </h2>
+        <h2>Color Pallets</h2>
           <hr />
            <div className="swatch-holder">
+           <h3 id="section4lbl" className="pallet-title" style={{textAlign:'center',color:this.state.grays[0],backgroundColor:this.state.grays[computedGrays.length-1]}}>
+              Original
+            </h3>
             <ColorSwatch label="Primary Color" color={ this.state.primaryColor } usePicker={ false } />
             {
               this.state.grays.map( ( item, index ) => (
@@ -107,6 +108,9 @@ class App extends Component {
           </div>
           <hr />
           <div className="swatch-holder">
+          <h3 className="pallet-title pallet-harmonized" style={{textAlign:'center',color:computedGrays[0],backgroundColor:computedGrays[computedGrays.length-1]}}>
+            Harmonized
+          </h3>
             <ColorSwatch label="Primary Color" color={ this.state.primaryColor } usePicker={ false } />
             {
               computedGrays.map( ( item, index ) => (
@@ -116,9 +120,7 @@ class App extends Component {
             
           </div>
           <hr />
-          <h2 className="pallet-title" style={{textAlign:'center',color:computedGrays[0],backgroundColor:computedGrays[computedGrays.length-1]}}>
-            Harmonized Pallet
-          </h2>
+          
         </section>
       </div>
     );
