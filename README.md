@@ -1,6 +1,6 @@
 # Simple Gray Harmonizer
 
-## [View Project](https://brentswisher.github.io/gray-harmonizer/)
+**[View Project](https://brentswisher.github.io/gray-harmonizer/)**
 
 ## Project Description
 
