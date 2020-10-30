@@ -43,7 +43,7 @@ class App extends Component {
             Simple Gray Harmonizer
           </h1>
           <p>
-            Use this tool to take the gray values for you design and harmonize them with your primary or secondary color. It's a little trick that gives designs a really nice unity.
+            Use this tool to take the gray values for a design and harmonize them with your primary or secondary color. It's a little trick that gives designs a really nice unity.
           </p>
           <p>
             <a href="https://github.com/brentswisher/gray-harmonizer" className="button" style={{backgroundColor:this.state.primaryColor} } >View on Github</a>
