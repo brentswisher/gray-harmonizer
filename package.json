@@ -4,9 +4,9 @@
   "private": true,
   "homepage": "https://brentswisher.github.io/gray-harmonizer",
   "dependencies": {
-    "react": "^16.6.0",
+    "react": "^19.0.0",
     "react-color": "^2.14.1",
-    "react-dom": "^16.6.0",
+    "react-dom": "^19.0.0",
     "react-scripts": "2.1.1"
   },
   "scripts": {
