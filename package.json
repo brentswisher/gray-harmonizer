@@ -27,6 +27,6 @@
   ],
   "devDependencies": {
     "gh-pages": "^2.0.1",
-    "jest": "^23.6.0"
+    "jest": "^30.0.0"
   }
 }
